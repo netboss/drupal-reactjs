@@ -23,13 +23,6 @@ class App extends Component {
     container.find('.button, .cancel-button').on('click', function(e) {
       e.preventDefault();
       container.removeClass('is-active').slideDown();
-      //var $nameVal = container.find('form #field-name');
-      //var $emailVal = container.find('form #email');
-      //var $msgVal = container.find('form #field-message');
-      //console.log( 'name id: ' + $nameVal.attr('value') + ' - email id: ' + $emailVal.attr('value') + ' - message id: ' + $msgVal.attr('value') );
-      //$nameVal.val("");
-      //$emailVal.val("");
-      //$msgVal.val("");
     });
   }
   componentDidMount() {
