@@ -13,8 +13,7 @@ export const source = {
   qualifications: getDomainApiUrl() + 'api/qualifications',
   expertise: getDomainApiUrl() + 'api/expertise',
   portfolio: getDomainApiUrl() + 'api/portfolio',
-  contact: getDomainApiUrl() + 'contact_message',
-  reactmenu: getDomainApiUrl() + 'api/reactmenu'
+  contact: getDomainApiUrl() + 'contact_message'
 }
 
 // Set the top nav URL paths
