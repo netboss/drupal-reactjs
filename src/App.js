@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Main from './Main';
 import Footer from './components/Footer';
-// Fixed issue with jQuery and Zurb Foundation
-// http://foundation.zurb.com/forum/posts/49761#comment_39827
-import $ from 'jquery';
-import 'foundation-sites';
 import Drupal from './components/pages/_partials/Drupal';
 import Contact from './components/pages/_partials/Contact';
+
+// Fixed issue with jQuery and Zurb Foundation
+// http://foundation.zurb.com/forum/posts/49761#comment_39827
+// https://stackoverflow.com/a/44056123
+import $ from 'jquery';
+import jquery from 'jquery';
+window.$ = window.jQuery = jquery;
+// Fixed issue when trying to run "yarn build"
+// https://github.com/zurb/foundation-sites/issues/10987
+// Load precompiled JS
+require('foundation-sites/dist/js/foundation');
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +34,9 @@ class App extends Component {
   componentDidMount() {
     // Include the Zurb Foundation JS
     // http://foundation.zurb.com/forum/posts/49761#comment_39827
-    $(document).foundation();
+    $(document).ready(function() {
+      $(document).foundation();
+    });
     // closes the panel on click outside
     $(document).mouseup(function (e) {
       var container = $('#contact-panel');

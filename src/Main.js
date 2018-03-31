@@ -6,7 +6,7 @@ import Objectives from './components/pages/Objectives';
 import Qualifications from './components/pages/Qualifications';
 import Expertise from './components/pages/Expertise';
 import Portfolio from './components/pages/Portfolio';
-import { getDomainApiUrl, source, paths } from './components/conf/Conf';
+import { paths } from './components/conf/Conf';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
