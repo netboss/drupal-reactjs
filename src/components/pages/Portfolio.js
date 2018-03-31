@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDomainApiUrl, source } from '../conf/Conf';
+import { source } from '../conf/Conf';
 
 const API = source.home;
 

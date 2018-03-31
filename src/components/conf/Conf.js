@@ -1,8 +1,36 @@
 // TODO: check environment and serve the correct URL
+var host = window.location.hostname;
 export function getDomainApiUrl() {
-  //var domainApiUrl = window.location.href;
-  var domainApiUrl = 'http://ilatorre.drupal.test/';
+  var domainApiUrl;
+  if (host === 'ilatorre.me') {
+    domainApiUrl = 'http://ilatorre.me/drupal/';
+  }
+  else {
+    domainApiUrl = 'http://ilatorre.drupal.test/';
+  }
   return domainApiUrl;
+}
+
+export function getLogo() {
+  var logo;
+  if (host === 'ilatorre.me') {
+    logo = 'http://ilatorre.me/drupal/sites/ilatorre.me/files/logo/white_logo_transparent.png';
+  }
+  else {
+    logo = 'http://ilatorre.drupal.test/sites/ilatorre.drupal.test/files/logo/white_logo_transparent.png';
+  }
+  return logo;
+}
+
+export function getDrupalBadge() {
+  var badge;
+  if (host === 'ilatorre.me') {
+    badge = 'http://ilatorre.me/drupal/sites/ilatorre.me/files/drupal_association_ind_member_badge.svg';
+  }
+  else {
+    badge = 'http://ilatorre.drupal.test/sites/ilatorre.drupal.test/files/drupal_association_ind_member_badge.svg';
+  }
+  return badge;
 }
 
 // Set the JSON API source

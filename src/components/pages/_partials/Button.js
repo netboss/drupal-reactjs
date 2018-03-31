@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {getDomainApiUrl, source} from '../../conf/Conf';
+import { source } from '../../conf/Conf';
 
 const API = source.contact;
 
@@ -54,7 +54,6 @@ class Button extends Component {
 	    'subject':[{'value':'Job opportunity'}],
 	    'message':[{'value':`${this.props.formValues.message}`}]
 		};
-		//console.log( 'formData.mail[0].value: ' + formData.mail[0].value + ' - this.props.formValues.name: ' + this.props.formValues.name );
 		this.postData(API, formData).then(data => console.log(data)).catch(error => console.error(error));
 	}
 
