@@ -1,8 +1,9 @@
 import React from 'react';
 import NavLink from './NavLink';
-import { getDomainApiUrl, source } from '../components/conf/Conf';
+import { getDomainApiUrl, getLogo } from '../components/conf/Conf';
 
 const API = getDomainApiUrl() + 'api/reactmenu';
+const logo = getLogo();
 
 class Menu extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class Menu extends React.Component {
               <button className="menu-icon" type="button" data-toggle=""></button>
             </span>
             <a href="/">
-              <img src="http://ilatorre.drupal.test/sites/ilatorre.drupal.test/files/logo/white_logo_transparent.png" alt="ILatorre.me" />
+              <img className="logo" src={logo} alt="iLatorre.me" />
             </a>
             {/*<a className="topbar-responsive-logo" href="/"><strong>&lt;il /&gt;</strong></a>*/}
           </div>
