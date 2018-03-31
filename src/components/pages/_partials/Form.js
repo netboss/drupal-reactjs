@@ -20,7 +20,6 @@ class Form extends Component {
 		this.validateEmails = this.validateEmails.bind(this);
 		this.validateTextField = this.validateTextField.bind(this);
 		this.validateTextFields = this.validateTextFields.bind(this);
-		//this.validate = this.validate.bind(this);
 	}
 
 	updateField(field, value) {
@@ -50,17 +49,18 @@ class Form extends Component {
 
 	validateEmails(email) {
 	  // Regex taken from here: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-		const emailRegexPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		//const emailRegexPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		const emailRegexPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	  var re = emailRegexPattern;
 	  return re.test(email);
 	}
 
 	validateEmail(email) {
 	  var $emailResult = $('.email-result');
-	  var email = $('#email').val();
+	  var $email = $('#email').val();
 	  $emailResult.text('');
 	  $emailResult.hide();
-		if (!this.validateEmails(email)) {
+		if (!this.validateEmails($email)) {
 	    $emailResult.text(email + ' is not a valid email.');
 	    $emailResult.css({'color': 'red'}).show();
 	  }
