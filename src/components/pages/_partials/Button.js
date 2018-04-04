@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { source } from '../../conf/Conf';
+import { getApiSource, getDrupalToken } from '../../conf/Conf';
 
-const API = source.contact;
+const API = getApiSource('contact_message');
 
 class Button extends Component {
 	static propTypes = {
@@ -25,7 +25,7 @@ class Button extends Component {
 
 	postData(url, data) {
 	  // Add initial values
-		var csrftoken = 'pOaTamBHjPu-wOYL9orim2fS4CIop41aRtypAh73-VM'; // from "/rest/session/token"
+		var csrftoken = getDrupalToken();
 		var headers = new Headers({
 			'Content-Type': 'application/json',
 			'X-CSRF-Token': csrftoken
@@ -48,10 +48,11 @@ class Button extends Component {
 		event.preventDefault();
 		this.setState({ isClicked: true });
 		var formData = {
-		  'contact_form':[{'target_id':'reactcontact'}],
+		  //'contact_form':[{'target_id':'reactcontact'}],
+		  'contact_form':[{'target_id':'feedback'}],
 	    'name':[{'value':`${this.props.formValues.name}`}],
 	    'mail':[{'value':`${this.props.formValues.email}`}],
-	    'subject':[{'value':'Job opportunity'}],
+	    'subject':[{'value':'Feedback from ilatorre.me'}],
 	    'message':[{'value':`${this.props.formValues.message}`}]
 		};
 		this.postData(API, formData).then(data => console.log(data)).catch(error => console.error(error));

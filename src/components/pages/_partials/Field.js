@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const Field = (props) => (
 	<div>
-		<label>{props.label}</label>
+		<label>{ props.label }</label>
 		<input
-			onChange={props.onChange}
-			id={props.textarea ? 'field-message' : 'field-name'}
-			type={props.textarea ? 'textarea' : 'text'}
-			value={props.value}
+			onChange={ props.onChange }
+			id={ props.textarea ? 'field-message' : 'field-name' }
+			type={ props.textarea ? 'textarea' : 'text' }
+			value={ props.value }
 		/>
 	</div>
 );
