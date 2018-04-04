@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import NavLink from './NavLink';
-import { getDomainApiUrl, getLogo } from '../components/conf/Conf';
+import { getApiSource, getLogo } from '../components/conf/Conf';
 
-const API = getDomainApiUrl() + 'api/reactmenu';
+const API = getApiSource('reactmenu');
 const logo = getLogo();
 
-class Menu extends React.Component {
+class Menu extends Component {
   state = {
     items: [],
   }
@@ -24,8 +24,8 @@ class Menu extends React.Component {
               {/* Fixed the problem with the "data-toggle" default: https://stackoverflow.com/a/43552977 */}
               <button className="menu-icon" type="button" data-toggle=""></button>
             </span>
-            <a href="/">
-              <img className="logo" src={logo} alt="iLatorre.me" />
+            <a href="/#/home">
+              <img className="logo" src={ logo } alt="iLatorre.me" />
             </a>
             {/*<a className="topbar-responsive-logo" href="/"><strong>&lt;il /&gt;</strong></a>*/}
           </div>
@@ -34,7 +34,11 @@ class Menu extends React.Component {
               <ul className="menu simple vertical medium-horizontal">
                 {
                   items.map(item =>
-                    <li key={item.uuid[0].value}><NavLink to={item.path[0].alias}>{item.name[0].value}</NavLink></li>
+                    <li key={ item.uuid[0] !== undefined ? item.uuid[0].value : 'key-' + Math.random() }>
+                      <NavLink to={ item.path[0] !== undefined ? item.path[0].alias : '/#/home' }>
+                        { item.name[0] !== undefined ? item.name[0].value : 'Home' }
+                      </NavLink>
+                    </li>
                   )
                 }
               </ul>

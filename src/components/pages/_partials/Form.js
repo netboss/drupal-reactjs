@@ -3,8 +3,9 @@ import Field from './Field';
 import EmailField from './EmailField';
 import Button from './Button';
 import $ from 'jquery';
+import ReCAPTCHA from 'react-google-recaptcha';
 
-const defaultEmail = "igl67@yahoo.com";
+const defaultEmail = "ivan@ilatorre.me";
 
 class Form extends Component {
 	constructor(props) {
@@ -20,6 +21,7 @@ class Form extends Component {
 		this.validateEmails = this.validateEmails.bind(this);
 		this.validateTextField = this.validateTextField.bind(this);
 		this.validateTextFields = this.validateTextFields.bind(this);
+		this.ReCAPTCHAonChange = this.ReCAPTCHAonChange.bind(this);
 	}
 
 	updateField(field, value) {
@@ -67,6 +69,13 @@ class Form extends Component {
 	  return email;
 	}
 
+	ReCAPTCHAonChange(response) {
+	  console.log("Captcha response:", response);
+	  this.setState({
+			'g-recaptcha-response': response
+		});
+	}
+
 	render() {
 		return(
 			<div className="contact-panel" id="contact-panel" data-toggler=".is-active">
@@ -76,32 +85,39 @@ class Form extends Component {
 			      <Field 
 							label="Name"	
 							name="name"
-							onChange={(event) => this.validateTextField(this.updateField('name', event.target.value))}
-							value={this.state.name}
+							onChange={ (event) => this.validateTextField(this.updateField('name', event.target.value)) }
+							value={ this.state.name }
 						/>
 						<p className="name-result"></p>
 			    </div>
 			    <div className="row email">
 			      <EmailField 
 							label="Email"
-							onChange={(event) => this.validateEmail(this.updateField('email', event.target.value)) }
-							value={this.state.email}
+							onChange={ (event) => this.validateEmail(this.updateField('email', event.target.value)) }
+							value={ this.state.email }
 						/>
 						<p className="email-result"></p>
 			    </div>
 			    <div className="row message">
 			      <Field 
 							label="Message"
-							onChange={(event) => this.updateField('message', event.target.value)}
-							textarea={true}
-							value={this.state.message}
+							onChange={ (event) => this.updateField('message', event.target.value) }
+							textarea={ true }
+							value={ this.state.message }
 						/>
 			    </div>
+			    <div className="recaptcha">
+						<ReCAPTCHA
+					    ref="recaptcha"
+					    sitekey="6Ld6KlAUAAAAAOE2taDjn3-OMoghtmTeH7lQ9Z3r"
+					    onChange={ this.ReCAPTCHAonChange }
+					  />
+			    </div>
 			    <div className="contact-panel-actions">
-			      <button className="cancel-button">Nevermind</button>
+			      <button className="button secondary cancel-button">Nevermind</button>
 						<Button
-							email={defaultEmail}
-							formValues={this.state}
+							email={ defaultEmail }
+							formValues={ this.state }
 						/>
 			    </div>
 			  </form>

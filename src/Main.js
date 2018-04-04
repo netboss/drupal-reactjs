@@ -8,21 +8,19 @@ import Expertise from './components/pages/Expertise';
 import Portfolio from './components/pages/Portfolio';
 import { paths } from './components/conf/Conf';
 
-// The Main component renders one of the three provided
-// Routes (provided that one matches). Both the /roster
-// and /schedule routes will match any pathname that starts
-// with /roster or /schedule. The / route will only match
-// when the pathname is exactly the string "/"
+const index = '/';
+
 const Main = () => (
   <main>
+  <h1 className="msg-sent hidden">Thank you! Your message have been sent.</h1>
     <Switch>
-      <Route exact path='/' render={() => <Home source="{source.home}"/>}/>
-      <Route exact path={paths.home} render={() => <Home source="{source.home}"/>}/>
-      <Route path={paths.bio} render={() => <Bio source="{source.bio}"/>}/>
-      <Route path={paths.objectives} render={() => <Objectives source="{source.objectives}"/>}/>
-      <Route path={paths.qualifications} render={() => <Qualifications source="{source.qualifications}"/>}/>
-      <Route path={paths.expertise} render={() => <Expertise source="{source.expertise}"/>}/>
-      <Route path={paths.portfolio} render={() => <Portfolio source="{source.portfolio}"/>}/>
+      <Route exact path={ index } render={ () => <Home /> }/>
+      <Route exact path={ paths.home } render={ () => <Home /> }/>
+      <Route path={ paths.bio } render={ () => <Bio /> }/>
+      <Route path={ paths.objectives } render={ () => <Objectives /> }/>
+      <Route path={ paths.qualifications } render={ () => <Qualifications /> }/>
+      <Route path={ paths.expertise } render={ () => <Expertise /> }/>
+      <Route path={ paths.portfolio } render={ () => <Portfolio /> }/>
     </Switch>
   </main>
 )

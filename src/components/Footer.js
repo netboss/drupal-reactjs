@@ -1,12 +1,12 @@
-import React from 'react';
-import {getDomainApiUrl} from './conf/Conf';
+import React, { Component } from 'react';
+import { getApiSource } from './conf/Conf';
 // Font Awesome
 // https://www.npmjs.com/package/react-fontawesome
 var FontAwesome = require('react-fontawesome');
 
-const API = getDomainApiUrl() + 'api/reactfooter';
+const API = getApiSource('reactfooter');
 
-class Footer extends React.Component {
+class Footer extends Component {
   state = {
     items: [],
   }
@@ -21,7 +21,7 @@ class Footer extends React.Component {
       <div>
         {
           items.map(item =>
-            <div key={item.toString()}>
+            <div key={ item.uuid[0] !== undefined ? item.uuid[0].value : 'key-' + Math.random() }>
               <footer className="social-footer">
 							  <div className="social-footer-left">
                   <h6><div dangerouslySetInnerHTML={{__html: item.body[0].value}}/></h6>
