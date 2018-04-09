@@ -37,9 +37,9 @@ class App extends Component {
   messageSentContactPanel() {
     var $main = $('main');
     var $container = $('#contact-panel');
-    $container.find('.button').on('click', function(e) {
+    $container.find('.submit-button').on('click', function(e) {
       e.preventDefault();
-      $main.find('.msg-sent').fadeIn().delay('1500').fadeOut('slow');
+      $main.find('.msg-sent').fadeIn().delay('1800').fadeOut('slow');
     });
   }
   componentDidMount() {
@@ -52,15 +52,17 @@ class App extends Component {
         var $container = $('#contact-panel');
         var $topNav = $('#topbar-responsive');
         if (!$container.is(e.target) // if the target of the click isn't the container...
-        && $container.has(e.target).length === 0) { // ... nor a descendant of the container
+          && $container.has(e.target).length === 0) { // ... nor a descendant of the container
           $container.removeClass('is-active');
         }
         // Close top nav panel on mobile menu simple vertical medium-horizontal
         // TODO: needs fine tunning to smooth it out
         if (!$topNav.is(e.target) // if the target of the click isn't the container...
-        && $topNav.has(e.target).length >= 0) { // ... nor a descendant of the container
+          && $topNav.has(e.target).length >= 0) { // ... nor a descendant of the container
           // Check if it's a mobile device
-          if (window.innerWidth <= 812) { // 812 is the new iPhone X landscape innerWidth
+          // 812 is the new iPhone X landscape innerWidth
+          // 414 is the iPhone 8+
+          if (window.innerWidth <= 601) {
             $topNav.slideUp('fast').fadeOut('fast');
           }
         }
