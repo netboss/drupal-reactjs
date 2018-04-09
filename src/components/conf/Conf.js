@@ -50,10 +50,12 @@ export function getDrupalBadge() {
 export function getDrupalToken() { // get token from "/rest/session/token"
   var csrftoken;
   if (host === 'ilatorre.me') {
-    csrftoken = 'o2gGx1ybE1U9u3ybXdTjg9GBTHIU9O43vePiAd6m71M';
+    //csrftoken = 'o2gGx1ybE1U9u3ybXdTjg9GBTHIU9O43vePiAd6m71M';
+    csrftoken = 'H65MaRPx5ZXVL4u_NG8pMUaoV7r-zo4QgBlSchMhEiQ';
   }
   else {
-    csrftoken = 'pOaTamBHjPu-wOYL9orim2fS4CIop41aRtypAh73-VM';
+    //csrftoken = 'pOaTamBHjPu-wOYL9orim2fS4CIop41aRtypAh73-VM';
+    csrftoken = 'JQizKFy9ChMsumRPxQpmtiKnvINobd4BqMyK5KnwpJo';
   }
   return csrftoken;
 }
@@ -67,19 +69,27 @@ export function setActiveHome() {
 }
 
 export function getApiSource(source) {
-  source = getDomainApiUrl() + 'api/' + source;
+  // After updating the Drupal version 8.4.4-dev to 8.5.1 it's now required
+  // to append the "?_format=json" parameter to the views JSON API call URL. 
+  // Issue reported here:
+  // https://www.drupal.org/forum/support/post-installation/2018-03-21/view-rest-export-does-not-work-anymore-after-upgrade-to
+  source = getDomainApiUrl() + 'api/' + source + '?_format=json';
   return source;
 }
 
 // Set the JSON API source
+// After updating the Drupal version 8.4.4-dev to 8.5.1 it's now required
+// to append the "?_format=json" parameter to the views JSON API call URL. 
+// Issue reported here:
+// https://www.drupal.org/forum/support/post-installation/2018-03-21/view-rest-export-does-not-work-anymore-after-upgrade-to 
 export const source = {
-  home: getDomainApiUrl() + 'api/home',
-  bio: getDomainApiUrl() + 'api/bio',
-  objectives: getDomainApiUrl() + 'api/objectives',
-  qualifications: getDomainApiUrl() + 'api/qualifications',
-  expertise: getDomainApiUrl() + 'api/expertise',
-  portfolio: getDomainApiUrl() + 'api/portfolio',
-  contact_message: getDomainApiUrl() + 'contact_message'
+  home: getDomainApiUrl() + 'api/home?_format=json',
+  bio: getDomainApiUrl() + 'api/bio?_format=json',
+  objectives: getDomainApiUrl() + 'api/objectives?_format=json',
+  qualifications: getDomainApiUrl() + 'api/qualifications?_format=json',
+  expertise: getDomainApiUrl() + 'api/expertise?_format=json',
+  portfolio: getDomainApiUrl() + 'api/portfolio?_format=json',
+  contact_message: getDomainApiUrl() + 'contact_message?_format=json'
 }
 
 // Set the top nav URL paths

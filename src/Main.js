@@ -9,10 +9,11 @@ import Portfolio from './components/pages/Portfolio';
 import { paths } from './components/conf/Conf';
 
 const index = '/';
+const msgSent = 'Thank you for your feedback!';
 
 const Main = () => (
   <main>
-  <h1 className="msg-sent hidden">Thank you! Your message have been sent.</h1>
+  <h1 className="msg-sent hidden">{ msgSent }</h1>
     <Switch>
       <Route exact path={ index } render={ () => <Home /> }/>
       <Route exact path={ paths.home } render={ () => <Home /> }/>

@@ -63,14 +63,14 @@ class Form extends Component {
 	  $emailResult.text('');
 	  $emailResult.hide();
 		if (!this.validateEmails($email)) {
-	    $emailResult.text(email + ' is not a valid email.');
+	    $emailResult.text($email + ' is not a valid email.');
 	    $emailResult.css({'color': 'red'}).show();
 	  }
 	  return email;
 	}
 
 	ReCAPTCHAonChange(response) {
-	  console.log("Captcha response:", response);
+	  //console.log("Captcha response:", response);
 	  this.setState({
 			'g-recaptcha-response': response
 		});

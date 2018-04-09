@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getApiSource, getDrupalToken } from '../../conf/Conf';
+import { getDrupalToken, source } from '../../conf/Conf';
 
-const API = getApiSource('contact_message');
+//const API = getApiSource('contact_message'); // this was wrongly adding "/api" to the contact_message path
+const API = source.contact_message;
 
 class Button extends Component {
 	static propTypes = {
@@ -28,7 +29,8 @@ class Button extends Component {
 		var csrftoken = getDrupalToken();
 		var headers = new Headers({
 			'Content-Type': 'application/json',
-			'X-CSRF-Token': csrftoken
+			'X-CSRF-Token': csrftoken,
+			'Authorization': 'Basic aXZhbkBpbGF0b3JyZS5tZTpvbzQ3Njdvbw=='
 		});
 	  // Default options are marked with *
 	  return fetch(url, {
@@ -55,6 +57,7 @@ class Button extends Component {
 	    'subject':[{'value':'Feedback from ilatorre.me'}],
 	    'message':[{'value':`${this.props.formValues.message}`}]
 		};
+		//console.log( 'formData: ' + formData.name[0].value + ' - API URL: ' + API );
 		this.postData(API, formData).then(data => console.log(data)).catch(error => console.error(error));
 	}
 
