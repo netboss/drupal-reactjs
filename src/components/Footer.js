@@ -29,7 +29,7 @@ class Footer extends Component {
 							  <div className="social-footer-icons">
 							    <ul className="menu simple">
 							      <li>
-                      <a href="https://www.linkedin.com/in/ilatorre/">
+                      <a href="https://www.linkedin.com/in/ilatorre/" target="_blank">
                         <span className="hidden">LinkedIn</span>
                         <FontAwesome
                           className="fa fa-linkedin"
@@ -38,7 +38,7 @@ class Footer extends Component {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.drupal.org/u/netboss">
+                      <a href="https://www.drupal.org/u/netboss" target="_blank">
                         <span className="hidden">Drupal</span>
                         <FontAwesome
                           className="fab fa-drupal"
@@ -47,7 +47,7 @@ class Footer extends Component {
                       </a>
                     </li>
 							      <li>
-                      <a href="https://twitter.com/netboss">
+                      <a href="https://twitter.com/netboss" target="_blank">
                         <span className="hidden">Twitter</span>
                         <FontAwesome
                           className="fa fa-twitter"

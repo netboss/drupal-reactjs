@@ -574,10 +574,27 @@
       font-size: .6rem;
       padding: .5rem; } }
 
+@media screen and (max-width: 63.9375em) and (orientation: landscape) {
+  .flip-card .flip-card-inner-back-title {
+    font-size: 1.1875rem;
+    line-height: 1.3; }
+  .flip-card .flip-card-inner-back-text {
+    font-size: 16px;
+    line-height: 1.2; } }
+
 @media screen and (max-width: 63.9375em) {
   .callout__body p {
     font-size: 16px;
     line-height: 1.5; } }
+
+/*
+ * External links aren't working on Chrome (Desktop and mobile).
+ * Setting .flip-card-inner "backface-visibility: visible;" fix the issue.
+ * Solution taken from here: http://foundation.zurb.com/forum/posts/53552#comment_38997
+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .flip-card-inner {
+    backface-visibility: visible; } }
 
 /* Google ReCaptcha & contact panel */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
@@ -589,6 +606,11 @@
     .contact-panel form input {
       height: 1.5rem;
       margin: 0 0 .4rem; }
+  /*
+   * Tips to style ReCaptcha taken from here:
+   * https://stackoverflow.com/questions/27713505/recaptcha-api-v2-styling
+   * https://geekgoddess.com/how-to-resize-the-google-nocaptcha-recaptcha/
+   */
   .recaptcha {
     max-height: 45px; }
     .recaptcha div {
