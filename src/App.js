@@ -67,22 +67,6 @@ class App extends Component {
           }
         }
       });
-      // Force click event on Chrome. The '<a>' element is not working properly on Chrome.
-      //if (navigator.userAgent.match(/Chrome/i) || navigator.userAgent.match(/Safari/i)) {
-        //var $flipCard = $('.flip-card');
-        //$flipCard.find('a.button').hide();
-        //$flipCard.each(function() {
-          //var $self = $(this);
-          //var $link = $self.find('a.button');
-          //$link.hide();
-          //var href = $link.attr('href');
-          //$self.unbind().click(function(e) {
-            //e.preventDefault();
-            //e.stopPropagation();
-            //window.open(href, '_blank');
-          //});          
-        //});
-      //}
     });
     // Hide the contact form after it's submitted
     this.hideContactPanel();
