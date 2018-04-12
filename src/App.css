@@ -437,7 +437,6 @@
     .app h6 strong {
       font-size: 1.5em; }
   .app .hidden {
-    color: #fff;
     display: none; }
   .app .content-container {
     padding: 0 20px 10px; }
@@ -588,9 +587,9 @@
     line-height: 1.5; } }
 
 /*
- * External links aren't working on Chrome (Desktop and mobile).
- * Setting .flip-card-inner "backface-visibility: visible;" fix the issue.
- * Solution taken from here: http://foundation.zurb.com/forum/posts/53552#comment_38997
+ * External links aren't working on the "Flip Card" building block on Chrome (Desktop and mobile).
+ * Adjusting the .flip-card-inner CSS selector to "backface-visibility: visible;" fixed the issue.
+ * This solution was suggested here: http://foundation.zurb.com/forum/posts/53552#comment_38997
  */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .flip-card-inner {
