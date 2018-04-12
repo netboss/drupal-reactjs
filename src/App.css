@@ -584,7 +584,11 @@
 @media screen and (max-width: 63.9375em) {
   .callout__body p {
     font-size: 16px;
-    line-height: 1.5; } }
+    line-height: 1.5; }
+  .contact-panel-button::after {
+    content: "⇑"; }
+  .is-active .contact-panel-button::after {
+    content: "⇓"; } }
 
 /*
  * External links aren't working on the "Flip Card" building block on Chrome (Desktop and mobile).
