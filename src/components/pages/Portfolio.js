@@ -37,7 +37,7 @@ class Portfolio extends Component {
                       </div>
                       <div className="flip-card-inner-back">
                         <h3 className="flip-card-inner-back-title">{ item.title[0] !== undefined ? item.title[0].value : 'Company' }</h3>
-                        <p className="flip-card-inner-back-text" dangerouslySetInnerHTML={ { __html: item.body[0] !== undefined ? item.body[0].value : 'Content' } }></p>
+                        <div className="flip-card-inner-back-text" dangerouslySetInnerHTML={ { __html: item.body[0] !== undefined ? item.body[0].value : 'Content' } }></div>
                         <a href={ item.field_url[0] ? item.field_url[0].value : '/' } target="_blank" className="button success">Visit { item.title[0] !== undefined ? item.title[0].value : 'Company' }'s web site</a>
                       </div>
                     </div>

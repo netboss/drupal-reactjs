@@ -24,32 +24,36 @@ class Form extends Component {
 		this.ReCAPTCHAonChange = this.ReCAPTCHAonChange.bind(this);
 	}
 
-	updateField(field, value) {
+	updateField = (field, value) => {
 		this.setState({ [field]: value })
 	}
 
-	validateTextFields(field) {
+	validateTextFields = field => {
 		// /^[a-zA-Z]+$/ - // Only alphabets allowed
 		// ^\\s+$ - // Check empty space
-		const textRegexPattern = /^[a-zA-Z]+$/;
+		// /^[a-zA-Z\s]*$/ - // Regex from here: https://stackoverflow.com/a/12778207
+		const textRegexPattern = /^[a-zA-Z\s]*$/;
 		var re = textRegexPattern;
-	  return re.match(field);
+	  return String(re).match(field);
 	}
 
-	validateTextField(field) {
+	validateTextField = field => {
 	  var $nameResult = $('.name-result');
 	  var name = $('#field-name').val();
 	  $nameResult.text('');
 	  $nameResult.hide();
 
-		if (name.length <= 1) {
-	  	$nameResult.text('The "Name" field can\'t be empty.');
-	    $nameResult.css({'color': 'red'}).show();
+	  //if (!this.validateTextFields(name) || name.length < 2) { // This needs work, the regex isn't working properly
+		if (name.length < 2) {
+	  	$nameResult
+	  		.text('The "Name" field can\'t be empty.')
+	  		.css({'color': 'red'})
+	  		.show();
 	  }
 	  return field;
 	}
 
-	validateEmails(email) {
+	validateEmails = email => {
 	  // Regex taken from here: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 		//const emailRegexPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		const emailRegexPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -57,19 +61,21 @@ class Form extends Component {
 	  return re.test(email);
 	}
 
-	validateEmail(email) {
+	validateEmail = email => {
 	  var $emailResult = $('.email-result');
 	  var $email = $('#email').val();
 	  $emailResult.text('');
 	  $emailResult.hide();
 		if (!this.validateEmails($email)) {
-	    $emailResult.text($email + ' is not a valid email.');
-	    $emailResult.css({'color': 'red'}).show();
+	    $emailResult
+	    	.text($email + ' is not a valid email.')
+	    	.css({'color': 'red'})
+	    	.show();
 	  }
 	  return email;
 	}
 
-	ReCAPTCHAonChange(response) {
+	ReCAPTCHAonChange = response => {
 	  //console.log("Captcha response:", response);
 	  this.setState({
 			'g-recaptcha-response': response

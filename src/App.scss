@@ -297,12 +297,18 @@ $box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !import
         line-height: 1.3;
       }
       .flip-card-inner-back-text {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.2;
+        p {
+          font-size: inherit;
+        }
       }
     }
   }
-  .callout__body p {
+  .callout h1 {
+    font-size: 16px;
+  }
+  .callout__body, .callout__body p {
     font-size: 16px;
     line-height: 1.5;
   }
